@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-* [`HexToRgb`](#HexToRGB)
-* [`Checks Argument Type`](#ChecksArgumentType)
+* [`HexToRgb`](#hextorgb)
+* [`Checks Argument Type`](#checksargumenttype)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
-* [`StrToBool`](#StrToBool)
-* [`Set/Get localStorage`](#SetOrGetLocalStorage)
+* [`StrToBool`](#strtobool)
+* [`Set/Get localStorage`](#setorgetlocalstorage)
     > `setStorage()`, `getStorage()`
-* [`Set/Get Cookie`](#SetOrGetCookie)
+* [`Set/Get Cookie`](#setorgetcookie)
     > `setCookie()`, `getCookie()`
 
 ## Methods
@@ -38,6 +38,8 @@ const hexToRgb = hex => {
 
 ![hexToRgb console error](./img/js/hextorgb.png)
 
+[☝︎ Back To TOP](#table-of-contents)
+
 ### ChecksArgumentType
 
 > Checks if the given argument type.
@@ -51,6 +53,8 @@ const isBool = val => is(val) === '[object Boolean]'
 const isRegExp = val => is(val) === '[object RegExp]'
 ```
 
+[☝︎ Back To TOP](#table-of-contents)
+
 ### StrToBool
 
 > Converts a string to boolean.
@@ -59,9 +63,11 @@ const isRegExp = val => is(val) === '[object RegExp]'
 const toBool = val => /^true$/i.test(str)
 ```
 
+[☝︎ Back To TOP](#table-of-contents)
+
 ### SetOrGetLocalStorage
 
-> Set/Get localStorage, using methods: [`isObj()`, `isArray()`](#ChecksArgumentType), [`toBool()`](#StrToBool)
+> Set/Get localStorage, using methods: [`isObj()`, `isArray()`](#checksargumenttype), [`toBool()`](#strtobool)
 
 ```js
 // Set localStorage
@@ -88,6 +94,8 @@ const getStorage = key => {
 }
 ```
 
+[☝︎ Back To TOP](#table-of-contents)
+
 ### SetOrGetCookie
 
 > Set/Get Cookie
@@ -105,3 +113,5 @@ const getCookie = key => {
     }).join('')
 }
 ```
+
+[☝︎ Back To TOP](#table-of-contents)
