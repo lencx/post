@@ -2,45 +2,56 @@
 
 ## Table of Contents
 
-* [`HexToRgb`](#hextorgb)
-* [`Checks Argument Type`](#checksargumenttype)
+* [`Color Converts`](#color-converts)
+    > `hexToRgb()`, `rgbToHex()`
+* [`Checks Argument Type`](#checks-argument-type)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
-* [`StrToBool`](#strtobool)
-* [`Set/Get localStorage`](#setorgetlocalstorage)
+* [`String To Boolean`](#string-to-boolean)
+* [`Set/Get localStorage`](#set-or-get-localstorage)
     > `setStorage()`, `getStorage()`
-* [`Set/Get Cookie`](#setorgetcookie)
+* [`Set/Get Cookie`](#set-or-get-cookie)
     > `setCookie()`, `getCookie()`
+* [`Object Has`](#object-has)
 
 ## Methods
 
-### HexToRGB
+### Color Converts
 
-> Converts a hex color to a `rgb()` string.
+> `Hex color` <=> `RGB`
 
 ```js
 const hexToRgb = hex => {
-    let len = hex.length
-    if(/^#[A-Fa-f0-9]{3}|[A-Fa-f0-9]{6}$/.test(hex) && (len === 4 || len === 7)) {
-        let h = parseInt(
-            hex.length === 4
-                ? Array.prototype.map.call(hex.slice(1), i => i+i).join('')
-                : hex.slice(1)
-        , 16)
-        return `rgb(${h >> 16}, ${(h & 0x00ff00) >> 8}, ${h & 0x0000ff})`
+    let _hex = /^#/.test(hex) ? hex.slice(1) : hex
+    if(/^(3|6)$/.test(_hex.length)) {
+        let h = parseInt(_hex.length === 3
+            ? [..._hex].map(i => i + i).join('')
+            : _hex, 16)
+        return  `rgb(${h >> 16}, ${(h & 0x00ff00) >> 8}, ${h & 0x0000ff})`
     } else {
-        console.error('Invalid color value! Parameter rules: Start with `#`, length `3` or `6`, range `0-9`, `a-f`, `A-F`')
+        console.error('Invalid color value! Parameter rules: range: (0-9 a-f A-F), color code: 3-digit or 6-digit')
     }
 }
-// hexToRgb('#acd') => "rgb(170, 204, 221)"
-// hexToRgb('#AAccdd') => "rgb(170, 204, 221)"
-// hexToRgb('acd') => 'Invalid color value! ...'
+// hexToRgb('acd') => "rgb(170, 204, 221)"
+// hexToRgb('#aaccdd') => "rgb(170, 204, 221)"
+// hexToRgb('adec') => 'Invalid color value! ...'
+
+const rgbToHex = (r, g, b) => {
+    const isRange = val => 0 <= val && val <= 255
+    return isRange(r) && isRange(g) && isRange(b)
+        ? '#' + ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
+        : console.error('Invalid color value! Parameter rules: value range: (0-255)')
+}
+// rgbToHex(0, 0, 0)
+// rgbToHex(240, 167, 3)
+// rgbToHex(255, 255, 255)
 ```
 
 ![hexToRgb console error](./img/js/hextorgb.png)
+![rgbToHex console error](./img/js/rgbtohex.png)
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### ChecksArgumentType
+### Checks Argument Type
 
 > Checks if the given argument type.
 
@@ -55,7 +66,7 @@ const isRegExp = val => is(val) === '[object RegExp]'
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### StrToBool
+### String To Boolean
 
 > Converts a string to boolean.
 
@@ -65,9 +76,9 @@ const toBool = val => /^true$/i.test(str)
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### SetOrGetLocalStorage
+### Set Or Get LocalStorage
 
-> Set/Get localStorage, using methods: [`isObj()`, `isArray()`](#checksargumenttype), [`toBool()`](#strtobool)
+> Set/Get localStorage, using methods: [`isObj()`, `isArray()`](#checks-argument-type), [`toBool()`](#string-to-boolean)
 
 ```js
 // Set localStorage
@@ -96,7 +107,7 @@ const getStorage = key => {
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### SetOrGetCookie
+### Set Or Get Cookie
 
 > Set/Get Cookie
 
@@ -112,6 +123,18 @@ const getCookie = key => {
             ? _v.substr(`${key}=`.length, _v.length) : void 0
     }).join('')
 }
+```
+
+[☝︎ Back To TOP](#table-of-contents)
+
+---
+
+### Object Has
+
+> Checks if `key` is a direct property of `object`.
+
+```js
+const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
 ```
 
 [☝︎ Back To TOP](#table-of-contents)
