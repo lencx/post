@@ -2,16 +2,17 @@
 
 ## Table of Contents
 
-* [`Color Converts`](#color-converts)
+* [*Color Converts*](#color-converts)
     > `hexToRgb()`, `rgbToHex()`
-* [`Checks Argument Type`](#checks-argument-type)
+* [*Checks Argument Type*](#checks-argument-type)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
-* [`String To Boolean`](#string-to-boolean)
-* [`Set/Get localStorage`](#set-or-get-localstorage)
+* [*String To Boolean*](#string-to-boolean)
+* [*Set/Get localStorage*](#set-or-get-localstorage)
     > `setStorage()`, `getStorage()`
-* [`Set/Get Cookie`](#set-or-get-cookie)
+* [*Set/Get Cookie*](#set-or-get-cookie)
     > `setCookie()`, `getCookie()`
-* [`Object Has`](#object-has)
+* [*Object Has*](#object-has)
+* [*Random HexColor*](#random-hexcolor)
 
 ## Methods
 
@@ -24,6 +25,7 @@ const hexToRgb = hex => {
     let _hex = /^#/.test(hex) ? hex.slice(1) : hex
     if(/^(3|6)$/.test(_hex.length)) {
         let h = parseInt(_hex.length === 3
+            // Array.prototype.map.call()
             ? [..._hex].map(i => i + i).join('')
             : _hex, 16)
         return  `rgb(${h >> 16}, ${(h & 0x00ff00) >> 8}, ${h & 0x0000ff})`
@@ -41,9 +43,9 @@ const rgbToHex = (r, g, b) => {
         ? '#' + ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
         : console.error('Invalid color value! Parameter rules: value range: (0-255)')
 }
-// rgbToHex(0, 0, 0)
-// rgbToHex(240, 167, 3)
-// rgbToHex(255, 255, 255)
+// rgbToHex(240, 167, 3) => '#f0a703'
+// rgbToHex(0, 0, 255) => '#0000ff'
+// rgbToHex(0, 256, 255) => 'Invalid color value! ...'
 ```
 
 ![hexToRgb console error](./img/js/hextorgb.png)
@@ -56,12 +58,12 @@ const rgbToHex = (r, g, b) => {
 > Checks if the given argument type.
 
 ```js
-const is = type => Object.prototype.toString.call(type)
-const isObj = val => is(val) === '[object Object]'
-const isArray = val => is(val) === '[object Array]'
-const isFunc = val => is(val) === '[object Function]'
-const isBool = val => is(val) === '[object Boolean]'
-const isRegExp = val => is(val) === '[object RegExp]'
+const is = (val, type) => Object.prototype.toString.call(val) === `[object ${type}]`
+const isObj = val => is(val, 'Object')
+const isArray = val => is(val, 'Array')
+const isFunc = val => is(val, 'Function')
+const isBool = val => is(val, 'Boolean')
+const isRegExp = val => is(val, 'RegExp')
 ```
 
 [☝︎ Back To TOP](#table-of-contents)
@@ -135,6 +137,32 @@ const getCookie = key => {
 
 ```js
 const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
+```
+
+[☝︎ Back To TOP](#table-of-contents)
+
+### Random HexColor
+
+> Generates a random hexadecimal color code.
+
+```js
+const randomHexColor = () => {
+    let n = (Math.random()*0xffffff|0).toString(16)
+    return '#' + (n.length !== 6
+        ? '0'.repeat(6 - n.length) + n : n)
+}
+
+// test
+/*
+for(let i=0; i<1000; i++) {
+    let a = randomColor()
+    if(a.length < 7) {
+        console.log(a)
+    } else {
+        console.log(a.length)
+    }
+}
+*/
 ```
 
 [☝︎ Back To TOP](#table-of-contents)
