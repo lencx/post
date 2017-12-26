@@ -2,8 +2,9 @@
 
 ## Table of Contents
 
-* [*Color Converts*](#color-converts)
-    > `hexToRgb()`, `rgbToHex()`
+* [*Color*](#color)
+    - [`hexToRgb()`, `rgbToHex()`](#hex-color-rgb)
+    - [`randomHexColor()`](#random-hexcolor)
 * [*Checks Argument Type*](#checks-argument-type)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
 * [*String To Boolean*](#string-to-boolean)
@@ -13,12 +14,15 @@
     > `setCookie()`, `getCookie()`
 * [*Object Has*](#object-has)
 * [*Random HexColor*](#random-hexcolor)
+* [*Order By*](#orderby)
 
 ## Methods
 
-### Color Converts
+### Color
 
-> `Hex color` <=> `RGB`
+#### `HexColor` <=> `RGB`
+
+> Color Converts
 
 ```js
 const hexToRgb = hex => {
@@ -50,6 +54,29 @@ const rgbToHex = (r, g, b) => {
 
 ![hexToRgb console error](./img/js/hextorgb.png)
 ![rgbToHex console error](./img/js/rgbtohex.png)
+
+#### Random HexColor
+
+> Generates a random hexadecimal color code.
+
+```js
+const randomHexColor = () => {
+    // 1<<24
+    let n = (Math.random()*(1<<24)|0).toString(16)
+    return '#' + (n.length !== 6
+        ? '0'.repeat(6 - n.length) + n : n)
+}
+
+// test
+/*
+for(let i=0; i<1000; i++) {
+    let a = randomHexColor()
+    if(a.length < 7) {
+        console.log(a)
+    }
+}
+*/
+```
 
 [☝︎ Back To TOP](#table-of-contents)
 
@@ -141,28 +168,46 @@ const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.cal
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### Random HexColor
-
-> Generates a random hexadecimal color code.
+### orderBy
 
 ```js
-const randomHexColor = () => {
-    let n = (Math.random()*0xffffff|0).toString(16)
-    return '#' + (n.length !== 6
-        ? '0'.repeat(6 - n.length) + n : n)
+/**
+ * orderBy
+ * @param {array} arr
+ * @param {string} prop - object property
+ * @param {string} orders - ['asc', 'desc']: 'asc' by default
+ */
+const orderBy = (arr, prop, orders) => {
+    const compare = (prop, orders) => {
+        orders = orders === 'desc' ? -1 : 1
+        const deepObj = obj => (~prop.indexOf('.') ? prop.split('.') : [prop]).reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
+        // a[prop] < b[prop] ? orders * -1 : orders * 1
+        return (a, b) => deepObj(a) < deepObj(b) ? orders * -1 : orders * 1
+    }
+    return arr.sort(compare(prop, orders))
 }
 
-// test
-/*
-for(let i=0; i<1000; i++) {
-    let a = randomColor()
-    if(a.length < 7) {
-        console.log(a)
-    } else {
-        console.log(a.length)
-    }
-}
-*/
+// test data
+const data = [
+    { name: 'Josh', age: 30 },
+    { name: 'Carlos', age: 19 },
+    { name: 'Carlos', age: 23 },
+    { name: 'Tim', age: 9 },
+    { name: 'Courtney', age: 27 },
+    { name: 'Bob', age: 30 }
+]
+const data2 = [
+    { name: { first: 'Josh', last: 'Jones' }, age: 30 },
+    { name: { first: 'Carlos', last: 'Jacques' }, age: 19 },
+    { name: { first: 'Carlos', last: 'Dante' }, age: 23 },
+    { name: { first: 'Tim', last: 'Marley' }, age: 9 },
+    { name: { first: 'Courtney', last: 'Smith' }, age: 27 },
+    { name: { first: 'Bob', last: 'Smith' }, age: 30 }
+]
+orderBy(data, 'name')
+orderBy(data, 'name', 'desc')
+orderBy(data2, 'name.first')
+orderBy(data2, 'name.first', 'desc')
 ```
 
 [☝︎ Back To TOP](#table-of-contents)
