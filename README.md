@@ -2,9 +2,18 @@
 
 ## Table of Contents
 
-* [*Color*](#color)
-    - [`hexToRgb()`, `rgbToHex()`](#hex-color-rgb)
-    - [`randomHexColor()`](#random-hexcolor)
+### [*Color*](#color)
+
+* [`hexToRgb()`, `rgbToHex()`](#hex-color-rgb)
+* [`randomHexColor()`](#random-hexcolor)
+
+### [*Object*](#object)
+
+* [*Object Has*](#object-has)
+* [*Get Depth Object properties*](#get-depth-object-properties)
+
+### [*Tools*](#tools)
+
 * [*Checks Argument Type*](#checks-argument-type)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
 * [*String To Boolean*](#string-to-boolean)
@@ -12,7 +21,6 @@
     > `setStorage()`, `getStorage()`
 * [*Set/Get Cookie*](#set-or-get-cookie)
     > `setCookie()`, `getCookie()`
-* [*Object Has*](#object-has)
 * [*Random HexColor*](#random-hexcolor)
 * [*Order By*](#orderby)
 
@@ -29,7 +37,6 @@ const hexToRgb = hex => {
     let _hex = /^#/.test(hex) ? hex.slice(1) : hex
     if(/^(3|6)$/.test(_hex.length)) {
         let h = parseInt(_hex.length === 3
-            // Array.prototype.map.call()
             ? [..._hex].map(i => i + i).join('')
             : _hex, 16)
         return  `rgb(${h >> 16}, ${(h & 0x00ff00) >> 8}, ${h & 0x0000ff})`
@@ -37,9 +44,6 @@ const hexToRgb = hex => {
         console.error('Invalid color value! Parameter rules: range: (0-9 a-f A-F), color code: 3-digit or 6-digit')
     }
 }
-// hexToRgb('acd') => "rgb(170, 204, 221)"
-// hexToRgb('#aaccdd') => "rgb(170, 204, 221)"
-// hexToRgb('adec') => 'Invalid color value! ...'
 
 const rgbToHex = (r, g, b) => {
     const isRange = val => 0 <= val && val <= 255
@@ -47,13 +51,10 @@ const rgbToHex = (r, g, b) => {
         ? '#' + ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0')
         : console.error('Invalid color value! Parameter rules: value range: (0-255)')
 }
-// rgbToHex(240, 167, 3) => '#f0a703'
-// rgbToHex(0, 0, 255) => '#0000ff'
-// rgbToHex(0, 256, 255) => 'Invalid color value! ...'
 ```
 
-![hexToRgb console error](./img/js/hextorgb.png)
-![rgbToHex console error](./img/js/rgbtohex.png)
+[[Read More ☞](./part/color)] &nbsp;
+[☝︎ Back To TOP](#table-of-contents)
 
 #### Random HexColor
 
@@ -61,26 +62,46 @@ const rgbToHex = (r, g, b) => {
 
 ```js
 const randomHexColor = () => {
-    // 1<<24
     let n = (Math.random()*(1<<24)|0).toString(16)
     return '#' + (n.length !== 6
         ? '0'.repeat(6 - n.length) + n : n)
 }
-
-// test
-/*
-for(let i=0; i<1000; i++) {
-    let a = randomHexColor()
-    if(a.length < 7) {
-        console.log(a)
-    }
-}
-*/
 ```
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### Checks Argument Type
+### Object
+
+#### Object Has
+
+> Checks if `key` is a direct property of `object`.
+
+```js
+const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
+```
+
+[☝︎ Back To TOP](#table-of-contents)
+
+#### Get Depth Object properties
+
+```js
+/**
+ * getDeepObj
+ * @param {object} obj
+ * @param {string} props - object property: using `dot` syntax
+ * @example
+ * let a = {b: {c: {d: {aa: 3}}}}
+ * getDeepObj(a, 'b.c')  // {d: {aa: 3}}
+ */
+const getDeepObj = (obj, props) => (~props.indexOf('.') ? props.split('.') : [props])
+    .reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
+```
+
+[☝︎ Back To TOP](#table-of-contents)
+
+### Tools
+
+#### Checks Argument Type
 
 > Checks if the given argument type.
 
@@ -95,7 +116,7 @@ const isRegExp = val => is(val, 'RegExp')
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### String To Boolean
+#### String To Boolean
 
 > Converts a string to boolean.
 
@@ -105,15 +126,15 @@ const toBool = val => /^true$/i.test(str)
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### Set Or Get LocalStorage
+#### Set Or Get LocalStorage
 
 > Set/Get localStorage, using methods: [`isObj()`, `isArray()`](#checks-argument-type), [`toBool()`](#string-to-boolean)
 
 ```js
 // Set localStorage
 /**
-* @parma {String} key
-* @parma {Any} val - [Number | Object | Array]
+* @parma {string} key
+* @parma {any} val - [number|object|array|string]
 */
 const setStorage = (key, val) => localStorage.setItem(key, isObj(val) || isArray(val) ? JSON.stringify(val) : val)
 
@@ -136,7 +157,7 @@ const getStorage = key => {
 
 [☝︎ Back To TOP](#table-of-contents)
 
-### Set Or Get Cookie
+#### Set Or Get Cookie
 
 > Set/Get Cookie
 
@@ -156,58 +177,25 @@ const getCookie = key => {
 
 [☝︎ Back To TOP](#table-of-contents)
 
----
-
-### Object Has
-
-> Checks if `key` is a direct property of `object`.
-
-```js
-const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
-```
-
-[☝︎ Back To TOP](#table-of-contents)
-
-### orderBy
+#### orderBy
 
 ```js
 /**
  * orderBy
- * @param {array} arr
- * @param {string} prop - object property
- * @param {string} orders - ['asc', 'desc']: 'asc' by default
+ * @param {array} arr - array object
+ * @param {string} prop - object property: property - using `dot` syntax
+ * @param {string} orders - ascending(`asc`) or descending(`desc`): 'asc' by default
  */
-const orderBy = (arr, prop, orders) => {
-    const compare = (prop, orders) => {
+const orderBy = (arr, props, orders) => {
+    const deepObj = obj => (~props.indexOf('.') ? props.split('.') : [props])
+        .reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
+    const compare = (props, orders) => {
         orders = orders === 'desc' ? -1 : 1
-        const deepObj = obj => (~prop.indexOf('.') ? prop.split('.') : [prop]).reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
-        // a[prop] < b[prop] ? orders * -1 : orders * 1
         return (a, b) => deepObj(a) < deepObj(b) ? orders * -1 : orders * 1
     }
-    return arr.sort(compare(prop, orders))
+    return arr.sort(compare(props, orders))
 }
-
-// test data
-const data = [
-    { name: 'Josh', age: 30 },
-    { name: 'Carlos', age: 19 },
-    { name: 'Carlos', age: 23 },
-    { name: 'Tim', age: 9 },
-    { name: 'Courtney', age: 27 },
-    { name: 'Bob', age: 30 }
-]
-const data2 = [
-    { name: { first: 'Josh', last: 'Jones' }, age: 30 },
-    { name: { first: 'Carlos', last: 'Jacques' }, age: 19 },
-    { name: { first: 'Carlos', last: 'Dante' }, age: 23 },
-    { name: { first: 'Tim', last: 'Marley' }, age: 9 },
-    { name: { first: 'Courtney', last: 'Smith' }, age: 27 },
-    { name: { first: 'Bob', last: 'Smith' }, age: 30 }
-]
-orderBy(data, 'name')
-orderBy(data, 'name', 'desc')
-orderBy(data2, 'name.first')
-orderBy(data2, 'name.first', 'desc')
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[Read More ☞](./part/orderby)] &nbsp;
+[[☝︎ Back To TOP](#table-of-contents)]
