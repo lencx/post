@@ -1,3 +1,4 @@
+# Color
 
 ```js
 /**
@@ -42,3 +43,6 @@ rgbToHex(0, 256, 255) // 'Invalid color value! ...'
 
 ![hexToRgb console error](./../img/js/hextorgb.png)
 ![rgbToHex console error](./../img/js/rgbtohex.png)
+
+[[↻ Back To Home](/)] &nbsp;
+[[☝︎ Back To TOP](#color)]
