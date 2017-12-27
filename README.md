@@ -53,7 +53,7 @@ const rgbToHex = (r, g, b) => {
 }
 ```
 
-[[Read More ☞](/part/color)] &nbsp;
+[[Read More ☞](/part/color.md)] &nbsp;
 [☝︎ Back To TOP](#table-of-contents)
 
 #### Random HexColor
@@ -197,5 +197,5 @@ const orderBy = (arr, props, orders) => {
 }
 ```
 
-[[Read More ☞](/part/orderby)] &nbsp;
+[[Read More ☞](/part/orderby.md)] &nbsp;
 [[☝︎ Back To TOP](#table-of-contents)]

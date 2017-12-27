@@ -46,5 +46,5 @@ orderBy(data2, 'name.first', 'desc')
 ![data](../img/js/orderby-2.png)
 ![data](../img/js/orderby-3.png)
 
-[[↻ Back To Home](/)] &nbsp;
+[[↻ Back To Home](/readme.md)] &nbsp;
 [[☝︎ Back To TOP](#orderby)]

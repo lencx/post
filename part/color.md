@@ -22,7 +22,6 @@ hexToRgb('acd') // "rgb(170, 204, 221)"
 hexToRgb('#aaccdd') // "rgb(170, 204, 221)"
 hexToRgb('adec') // 'Invalid color value! ...'
 
-
 /**
  * rgbToHex
  * @param {number} - r : 0 ~ 255
@@ -44,5 +43,5 @@ rgbToHex(0, 256, 255) // 'Invalid color value! ...'
 ![hexToRgb console error](./../img/js/hextorgb.png)
 ![rgbToHex console error](./../img/js/rgbtohex.png)
 
-[[↻ Back To Home](/)] &nbsp;
+[[↻ Back To Home](/readme.md)] &nbsp;
 [[☝︎ Back To TOP](#color)]
