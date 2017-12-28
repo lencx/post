@@ -54,7 +54,7 @@ const rgbToHex = (r, g, b) => {
 ```
 
 [[Read More ☞](/part/color.md)] &nbsp;
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### Random HexColor
 
@@ -68,7 +68,7 @@ const randomHexColor = () => {
 }
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 ### Object
 
@@ -80,7 +80,7 @@ const randomHexColor = () => {
 const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### Get Depth Object properties
 
@@ -97,7 +97,7 @@ const getDeepObj = (obj, props) => (~props.indexOf('.') ? props.split('.') : [pr
     .reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 ### Tools
 
@@ -114,7 +114,7 @@ const isBool = val => is(val, 'Boolean')
 const isRegExp = val => is(val, 'RegExp')
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### String To Boolean
 
@@ -124,7 +124,7 @@ const isRegExp = val => is(val, 'RegExp')
 const toBool = val => /^true$/i.test(str)
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### Set Or Get LocalStorage
 
@@ -155,7 +155,7 @@ const getStorage = key => {
 }
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### Set Or Get Cookie
 
@@ -175,7 +175,7 @@ const getCookie = key => {
 }
 ```
 
-[☝︎ Back To TOP](#table-of-contents)
+[[☝︎ Back To TOP]](#table-of-contents)
 
 #### orderBy
 
@@ -197,5 +197,5 @@ const orderBy = (arr, props, orders) => {
 }
 ```
 
-[[Read More ☞](/part/orderby.md)] &nbsp;
+[[Read More ☞](/part/orderBy.md)] &nbsp;
 [[☝︎ Back To TOP](#table-of-contents)]
