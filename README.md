@@ -4,15 +4,31 @@
 
 ### [*Color*](#color)
 
+<details>
+
+<summary>View contents</summary>
+
 * [`hexToRgb()`, `rgbToHex()`](#hex-color-rgb)
 * [`randomHexColor()`](#random-hexcolor)
 
+</details>
+
 ### [*Object*](#object)
+
+<details>
+
+<summary>View contents</summary>
 
 * [*Object Has*](#object-has)
 * [*Get Depth Object properties*](#get-depth-object-properties)
 
+</details>
+
 ### [*Tools*](#tools)
+
+<details>
+
+<summary>View contents</summary>
 
 * [*Checks Argument Type*](#checks-argument-type)
     > `isObj()`, `isArray()`, `isFunc()`, `isBool()`, `isRegExp()`
@@ -21,8 +37,21 @@
     > `setStorage()`, `getStorage()`
 * [*Set/Get Cookie*](#set-or-get-cookie)
     > `setCookie()`, `getCookie()`
+* [*Generated UUID*](#generated-uuid)
 * [*Random HexColor*](#random-hexcolor)
 * [*Order By*](#orderby)
+
+</details>
+
+### [*Math*](#math)
+
+<details>
+
+<summary>View contents</summary>
+
+* [*Round*](#round)
+
+</details>
 
 ## Methods
 
@@ -177,6 +206,25 @@ const getCookie = key => {
 
 [[☝︎ Back To TOP]](#table-of-contents)
 
+#### Generated UUID
+
+```js
+// https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+const uuid = () => {
+    let d = new Date().getTime()
+    if(typeof performance !== 'undefined' && typeof performance.now === 'function') {
+        d += performance.now()
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        let r = (d + Math.random() * 16) % 16 | 0
+        d = Math.floor(d / 16)
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+    })
+}
+```
+
+[[☝︎ Back To TOP]](#table-of-contents)
+
 #### orderBy
 
 ```js
@@ -198,4 +246,14 @@ const orderBy = (arr, props, orders) => {
 ```
 
 [[Read More ☞](/part/orderBy.md)] &nbsp;
+[[☝︎ Back To TOP](#table-of-contents)]
+
+### Math
+
+#### Round
+
+```js
+const rd = (num, decimals) => Number(`${Math.round(`${num}e${decimals}`)}e-${decimals}`)
+```
+
 [[☝︎ Back To TOP](#table-of-contents)]
