@@ -8,7 +8,7 @@
 
 <summary>View contents</summary>
 
-* [`hexToRgb()`, `rgbToHex()`](#hex-color-rgb)
+* [`hexToRgb()`, `rgbToHex()`](#hexcolor--rgb)
 * [`randomHexColor()`](#random-hexcolor)
 
 </details>
@@ -39,7 +39,7 @@
     > `setCookie()`, `getCookie()`
 * [*Generated UUID*](#generated-uuid)
 * [*Random HexColor*](#random-hexcolor)
-* [*Order By*](#orderby)
+* [*OrderBy*](#orderby)
 
 </details>
 
@@ -50,6 +50,17 @@
 <summary>View contents</summary>
 
 * [*Round*](#round)
+
+</details>
+
+### [*Array*](#array)
+
+<details>
+
+<summary>View contents</summary>
+
+* [*Array Unique*](#array-unique)
+* [*Array Item Count*](#array-item-count)
 
 </details>
 
@@ -254,6 +265,44 @@ const orderBy = (arr, props, orders) => {
 
 ```js
 const rd = (num, decimals) => Number(`${Math.round(`${num}e${decimals}`)}e-${decimals}`)
+```
+
+[[☝︎ Back To TOP](#table-of-contents)]
+
+### Array
+
+#### Array Unique
+
+> Remove duplicate values from an array.
+
+```js
+const unique = arr => [...new Set(arr)]
+
+const unique2 = arr => arr.filter((item, index, arr) => arr.indexOf(item) === index)
+
+// let a = [1, 3, 2, 6, 3, 3, 1]
+// unique(a) -> [1, 3, 2, 6]
+// unique2(a) -> [1, 3, 2, 6]
+```
+
+[[☝︎ Back To TOP](#table-of-contents)]
+
+#### Array Item Count
+
+> Count the number of each element in an array.
+
+```js
+const arrItemCount = arr => {
+    let _arr = new Set()
+    Array.from([...new Set(arr)]).some(item => {
+        let n = 0
+        arr.map(i => i === item ? n++ : void 0)
+        _arr.add({[item]: n})
+    })
+    return [..._arr]
+}
+// let a = [5,7,1,5,7,5]
+// arrItemCount(a) -> [{5: 3}, {7: 2}, {1: 1}]
 ```
 
 [[☝︎ Back To TOP](#table-of-contents)]
