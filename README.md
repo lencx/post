@@ -2,14 +2,18 @@
 
 ## Table of Contents
 
+### *Concept*
+
+* [`this`](/concept/this.zh.md)
+
 ### [*Color*](#color)
 
 <details>
 
 <summary>View contents</summary>
 
-* [`hexToRgb()`, `rgbToHex()`](#hexcolor--rgb)
-* [`randomHexColor()`](#random-hexcolor)
+* [hexToRgb(), rgbToHex()](#hexcolor--rgb)
+* [randomHexColor()](#random-hexcolor)
 
 </details>
 
@@ -263,6 +267,8 @@ const orderBy = (arr, props, orders) => {
 
 #### Round
 
+> Rounds a number to a specified amount of digits.
+
 ```js
 const rd = (num, decimals) => Number(`${Math.round(`${num}e${decimals}`)}e-${decimals}`)
 ```
@@ -294,7 +300,7 @@ const unique2 = arr => arr.filter((item, index, arr) => arr.indexOf(item) === in
 ```js
 const arrItemCount = arr => {
     let _arr = new Set()
-    Array.from([...new Set(arr)]).some(item => {
+    Array.from([...new Set(arr)]).map(item => {
         let n = 0
         arr.map(i => i === item ? n++ : void 0)
         _arr.add({[item]: n})
