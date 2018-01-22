@@ -312,3 +312,31 @@ const arrItemCount = arr => {
 ```
 
 [[☝︎ Back To TOP](#table-of-contents)]
+
+### base64
+
+```js
+const b64Encode = str => btoa(encodeURI(str))
+const b64Decode = str => decodeURI(atob(str))
+```
+
+### reduce()
+
+> arr.reduce(callback[, initialValue])
+
+```js
+const flattened = arr => arr.reduce((prev, val) => prev.concat(val), [])
+
+const itemCount = arr => arr.reduce((all, val) => {
+    if(val in all) all[val]++
+    else all[val] = 1
+    return all
+}, {})
+```
+
+<!-- ```js
+const ab = (a, b) => {
+    a^=b,b^=a,a^=b
+    return {a,b}
+}
+``` -->
