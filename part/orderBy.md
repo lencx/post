@@ -2,49 +2,52 @@
 
 ```js
 /**
- * orderBy
- * @param {array} arr - array object
- * @param {string} prop - object property: property - using `dot` syntax
- * @param {string} [orders] - ascending(`asc`) or descending(`desc`): 'asc' by default
+ * OrderBy
+ * @param {Array} arr - Array Of Object
+ * @param {String} props - Object properties: using `dot` syntax
+ * => {a: b: {c: 1}} // a.b.c => 1
+ * @param {String} orders - ['asc' | 'desc'], 'asc' by default
+ * @param {Function} fn - callback
+ * => syntax: orderBy(arr, props[, orders, fn])
  */
-const orderBy = (arr, props, orders) => {
-    const deepObj = obj => (~props.indexOf('.') ? props.split('.') : [props])
+const orderBy = (arr, props, orders, fn) => {
+    const getObjVal = obj => (~props.indexOf('.') ? props.split('.') : [props])
         .reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
-    const compare = (props, orders) => {
-        orders = orders === 'desc' ? -1 : 1
-        return (a, b) => deepObj(a) < deepObj(b) ? orders * -1 : orders * 1
-    }
-    return arr.sort(compare(props, orders))
+    orders = orders === 'desc' ? -1 : 1
+    fn = fn === undefined ? cb => cb : fn
+    const compare = () => (a, b) => fn(getObjVal(a)) < fn(getObjVal(b)) ? orders * -1 : orders
+    return arr.sort(compare())
 }
 
 /******
 * test data
 */
-const data = [
-    { name: 'Josh', age: 30 },
-    { name: 'Carlos', age: 19 },
-    { name: 'Carlos', age: 23 },
-    { name: 'Tim', age: 9 },
-    { name: 'Courtney', age: 27 },
-    { name: 'Bob', age: 30 }
+let a = [
+    {date: '2017.2.22', thing: 'six'},
+    {date: '2017/1/14', thing: 'three'},
+    {date: '2017/01/23', thing: 'four'},
+    {date: '2017 1 1', thing: 'one'},
+    {date: '2017-1-9', thing: 'two'},
+    {date: '2.21 2017',thing: 'five'}
 ]
-const data2 = [
-    { name: { first: 'Josh', last: 'Jones' }, age: 30 },
-    { name: { first: 'Carlos', last: 'Jacques' }, age: 19 },
-    { name: { first: 'Carlos', last: 'Dante' }, age: 23 },
-    { name: { first: 'Tim', last: 'Marley' }, age: 9 },
-    { name: { first: 'Courtney', last: 'Smith' }, age: 27 },
-    { name: { first: 'Bob', last: 'Smith' }, age: 30 }
+let b = [
+    {part: {title: 'two', content: 'content 1'}, id: 'dskjk238128430412'},
+    {part: {title: '123', content: 'content 2'}, id: 'asdadrerkj323ewes'},
+    {part: {title: 'abc', content: 'content 3'}, id: 'opopklkqwlqoeo234'},
+    {part: {title: 'one', content: 'content 4'}, id: 'ai324389585ik12md'},
+    {part: {title: 'four', content: 'content 5'}, id: 'tr432cdsdsdcnnmsd'},
 ]
-orderBy(data, 'name')
-orderBy(data, 'age', 'desc')
-orderBy(data2, 'name.first')
-orderBy(data2, 'name.first', 'desc')
+orderBy(a, 'date', 'asc', date => new Date(date))
+orderBy(a, 'date', 'desc', date => new Date(date))
+orderBy(a, 'thing')
+orderBy(a, 'thing', 'desc')
+
+orderBy(b, 'id')
+orderBy(b, 'part.title', 'desc')
 ```
 
-![data](/img/js/orderby-2.png)
-![data](/img/js/orderby-3.png)
-![data](/img/js/orderby-1.png)
+![data](/img/js/orderby-a.png)
+![data](/img/js/orderby-b.png)
 
 [[↻ Back To Home](/README.md)] &nbsp;
 [[☝︎ Back To TOP](#orderby)]

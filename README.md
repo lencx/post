@@ -244,19 +244,21 @@ const uuid = () => {
 
 ```js
 /**
- * orderBy
- * @param {array} arr - array object
- * @param {string} prop - object property: property - using `dot` syntax
- * @param {string} orders - ascending(`asc`) or descending(`desc`): 'asc' by default
+ * OrderBy
+ * @param {Array} arr - Array Of Object
+ * @param {String} props - Object properties: using `dot` syntax
+ * => {a: b: {c: 1}} // a.b.c => 1
+ * @param {String} orders - ['asc' | 'desc'], 'asc' by default
+ * @param {Function} fn - callback
+ * => syntax: orderBy(arr, props[, orders, fn])
  */
-const orderBy = (arr, props, orders) => {
-    const deepObj = obj => (~props.indexOf('.') ? props.split('.') : [props])
+const orderBy = (arr, props, orders, fn) => {
+    const getObjVal = obj => (~props.indexOf('.') ? props.split('.') : [props])
         .reduce((acc, key) => acc && key in acc ? acc[key] : null, obj)
-    const compare = (props, orders) => {
-        orders = orders === 'desc' ? -1 : 1
-        return (a, b) => deepObj(a) < deepObj(b) ? orders * -1 : orders * 1
-    }
-    return arr.sort(compare(props, orders))
+    orders = orders === 'desc' ? -1 : 1
+    fn = fn === undefined ? cb => cb : fn
+    const compare = () => (a, b) => fn(getObjVal(a)) < fn(getObjVal(b)) ? orders * -1 : orders
+    return arr.sort(compare())
 }
 ```
 
