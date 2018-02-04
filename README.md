@@ -39,8 +39,8 @@
 * [*String To Boolean*](#string-to-boolean)
 * [*Set/Get localStorage*](#set-or-get-localstorage)
     > `setStorage()`, `getStorage()`
-* [*Set/Get Cookie*](#set-or-get-cookie)
-    > `setCookie()`, `getCookie()`
+* [*Set/Get/Del Cookie*](#set-or-get-or-delete-cookie)
+    > `setCookie()`, `getCookie()`, `delCookie()`
 * [*Generated UUID*](#generated-uuid)
 * [*Random HexColor*](#random-hexcolor)
 * [*OrderBy*](#orderby)
@@ -201,9 +201,9 @@ const getStorage = key => {
 
 [[☝︎ Back To TOP]](#table-of-contents)
 
-#### Set Or Get Cookie
+#### Set Or Get Or Delete Cookie
 
-> Set/Get Cookie
+> Set/Get/Del Cookie
 
 ```js
 // Set Cookie
@@ -217,6 +217,9 @@ const getCookie = key => {
             ? _v.substr(`${key}=`.length, _v.length) : void 0
     }).join('')
 }
+
+// Delete Cookie
+const delCookie = key => document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
 ```
 
 [[☝︎ Back To TOP]](#table-of-contents)
@@ -336,9 +339,41 @@ const itemCount = arr => arr.reduce((all, val) => {
 }, {})
 ```
 
+```js
+/**
+ * strurlToLink
+ * Replace the url in the sting with a link
+ * @param {String} str
+ */
+const strURLToLink = str => str.replace(/(https?|ftp)(:\/\/(\w|=|\?|\.|\/|&|-)+)/g, `<a style='word-break: break-all;' href="$1$2">$1$2</a>`)
+```
+
 <!-- ```js
 const ab = (a, b) => {
     a^=b,b^=a,a^=b
     return {a,b}
 }
 ``` -->
+
+```js
+const throttle = (method, delay) => {
+    let last = 0
+    return function () {
+        let now = Date.now()
+        if(now - last > delay) {
+            method.apply(this, arguments)
+            last = now
+        }
+    }
+}
+
+const debounce = (method, delay) => {
+    let timer = null, _ = this
+    return function() {
+        clearTimeout(timer)
+        timer = setTimeout(function() {
+            method.call(_)
+        }, delay)
+    }
+}
+```
