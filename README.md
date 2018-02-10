@@ -376,4 +376,10 @@ const debounce = (method, delay) => {
         }, delay)
     }
 }
+
+const unionSet = (...arr) => [...new Set([...arr].reduce((a, b) => [...a].concat([...b])))]
+
+const intersectionSet = (...arr) => [...new Set([...arr].reduce((a, b) => [...a].filter(x => b.includes(x))))]
+
+const differenceABSet = (a, b) => a.concat(b).filter(v => !a.includes(v) || !b.includes(v))
 ```
