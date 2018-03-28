@@ -339,14 +339,42 @@ const itemCount = arr => arr.reduce((all, val) => {
 }, {})
 ```
 
+---
+
+### URL
+
 ```js
 /**
- * strurlToLink
+ * strURLToLink
  * Replace the url in the sting with a link
  * @param {String} str
  */
 const strURLToLink = str => str.replace(/(https?|ftp)(:\/\/(\w|=|\?|\.|\/|&|-)+)/g, `<a style='word-break: break-all;' href="$1$2">$1$2</a>`)
 ```
+
+```js
+/**
+ * URL Parmater Object
+ * @return {Object}
+ */
+const paramURL = () => {
+    let o = {}
+    location.search.substring(1).split('&').some(i=> {
+        let _i = i.split('=')
+        Object.assign(o, {[_i[0]]: _i[1]})
+    })
+    return o
+}
+
+/**
+ * Query URL
+ * @param {String} - key
+ * @return {String} - value
+ */
+const queryURL = key => paramURL()[key]
+```
+
+---
 
 <!-- ```js
 const ab = (a, b) => {
