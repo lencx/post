@@ -359,7 +359,7 @@ const strURLToLink = str => str.replace(/(https?|ftp)(:\/\/(\w|=|\?|\.|\/|&|-)+)
  */
 const paramURL = () => {
     let o = {}
-    location.search.substring(1).split('&').some(i=> {
+    decodeURIComponent(location.search.substring(1)).split('&').some(i=> {
         let _i = i.split('=')
         Object.assign(o, {[_i[0]]: _i[1]})
     })
