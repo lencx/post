@@ -361,9 +361,9 @@ const paramURL = () => {
     let o = {}
     decodeURIComponent(location.search.substring(1)).split('&').some(i=> {
         let _i = i.split('=')
-        Object.assign(o, {[_i[0]]: _i[1]})
+        o = _i[0] === '' ? null : Object.assign(o, {[_i[0]]: _i[1]})
     })
-    return o
+    return o === null ? console.log('%cNo parameter object', 'font-weight: bold; color: yellow;') : o
 }
 
 /**
@@ -372,6 +372,20 @@ const paramURL = () => {
  * @return {String} - value
  */
 const queryURL = key => paramURL()[key]
+```
+
+---
+
+### Scroll
+
+```js
+const backToTop = () => {
+    const s = document.documentElement.scrollTop || document.body.scrollTop
+    if(s>0) {
+        window.requestAnimationFrame(backToTop)
+        window.scrollTo(0, s-s/12)
+    }
+}
 ```
 
 ---
