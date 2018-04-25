@@ -425,3 +425,15 @@ const intersectionSet = (...arr) => [...new Set([...arr].reduce((a, b) => [...a]
 
 const differenceABSet = (a, b) => a.concat(b).filter(v => !a.includes(v) || !b.includes(v))
 ```
+
+---
+
+```js
+/**
+ * HTML decode
+ * @param {String} - &#x5DE7;&#x5408;
+ * @example
+ * htmlDecode('&#x5DE7;&#x5408;') => 巧合
+ */
+const htmlDecode = str => str.replace(/&#(x)?(\w+);/g, ($, $1, $2) => String.fromCharCode(parseInt($2, $1 ? 16 : 10)))
+```
