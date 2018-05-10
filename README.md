@@ -437,3 +437,14 @@ const differenceABSet = (a, b) => a.concat(b).filter(v => !a.includes(v) || !b.i
  */
 const htmlDecode = str => str.replace(/&#(x)?(\w+);/g, ($, $1, $2) => String.fromCharCode(parseInt($2, $1 ? 16 : 10)))
 ```
+
+```js
+const tpl = (html, data) => document.querySelector(html).innerHTML
+        .replace(/(\{\{)(\w+)(\}\})/g, ($, $1, $2) => data[$2] || '')
+```
+
+```js
+const maskPhone = num => `${num}`.replace(/(\d{3})(\d+)(\d{4})/, ($, $1, $2, $3) => `${$1}${'*'.repeat(4)}${$2}`)
+
+const maskBankCard = num => `${num}`.replace(/(\d{12})(\d{4})/, ($, $1, $2) => `${'**** '.repeat(3)}${$2}`)
+```
