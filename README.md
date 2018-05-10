@@ -443,8 +443,49 @@ const tpl = (html, data) => document.querySelector(html).innerHTML
         .replace(/(\{\{)(\w+)(\}\})/g, ($, $1, $2) => data[$2] || '')
 ```
 
-```js
-const maskPhone = num => `${num}`.replace(/(\d{3})(\d+)(\d{4})/, ($, $1, $2, $3) => `${$1}${'*'.repeat(4)}${$2}`)
+---
 
-const maskBankCard = num => `${num}`.replace(/(\d{12})(\d{4})/, ($, $1, $2) => `${'**** '.repeat(3)}${$2}`)
+> Hide part of numbers or characters
+
+```js
+/**
+ * maskPhone
+ * @param {Number|String} - phone number
+ * @param {Number|String} - hide digits: 4(default) | 6
+ * @example
+ * maskPhone(12345678910) => "123****8910"
+ * maskPhone(12345678910, 6) => "123******10"
+ */
+const maskPhone = (phone, num = 4) => `${phone}`
+    .replace(/(\d{3})(\d+)(\d{2})(\d{2})/, ($, $1, $2, $3, $4) => `${$1}${'*'.repeat(num)}${num == 4 ? $3+$4 : $4}`)
+
+/**
+ * maskBankCard
+ * @param {Number|String} - bank card number
+ * @example
+ * maskBankCard(1234323432344019) => "**** **** **** 4019"
+ * maskBankCard('1234 3234 3234 4019') => "**** **** **** 4019"
+ */
+const maskBankCard = card => `${typeof card === 'string'
+    ? card.replace(/\s/g, '') : card}`
+    .replace(/(\d+)(\d{4})/, ($, $1, $2) => `${'**** '.repeat(3)}${$2}`)
+    // .replace(/(.*)(\d{4})/, ($, $1, $2) => `${$1.replace(/.{4}/g, '**** ')}${$2}`)
+
+/**
+ * maskEmail
+ * @param {String} - email
+ * @example
+ * maskEmail('alskdl_5456wd@gmail.com') => "a***********d@gmail.com"
+ */
+const maskEmail = str => str
+    .replace(/^(.)(.*)(.@.*)$/, ($, $1, $2, $3) => `${$1}${'*'.repeat($2.length)}${$3}`)
+
+/**
+ * maskIDcard
+ * @param {String} - ID card
+ * @example
+ * maskIDcard('12345432345345634x') => "123************34x"
+ */
+const maskIDcard = num => `${num}`
+    .replace(/(\d{3})(\d+)(\w{3})/, ($, $1, $2, $3) => `${$1}${'*'.repeat($2.length)}${$3}`)
 ```
