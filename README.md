@@ -482,7 +482,7 @@ const maskEmail = str => str
 
 /**
  * maskIDcard
- * @param {String} - ID card
+ * @param {Number|String} - ID card
  * @example
  * maskIDcard('12345432345345634x') => "123************34x"
  */
