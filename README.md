@@ -477,7 +477,7 @@ const maskBankCard = card => `${typeof card === 'string'
  * @example
  * maskEmail('alskdl_5456wd@gmail.com') => "a***********d@gmail.com"
  */
-const maskEmail = str => str
+const maskEmail = email => email
     .replace(/^(.)(.*)(.@.*)$/, ($, $1, $2, $3) => `${$1}${'*'.repeat($2.length)}${$3}`)
 
 /**
@@ -486,6 +486,6 @@ const maskEmail = str => str
  * @example
  * maskIDcard('12345432345345634x') => "123************34x"
  */
-const maskIDcard = num => `${num}`
+const maskIDcard = card => `${card}`
     .replace(/(\d{3})(\d+)(\w{3})/, ($, $1, $2, $3) => `${$1}${'*'.repeat($2.length)}${$3}`)
 ```
