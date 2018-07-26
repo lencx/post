@@ -489,3 +489,33 @@ const maskEmail = email => email
 const maskIDcard = card => `${card}`
     .replace(/(\d{3})(\d+)(\w{3})/, ($, $1, $2, $3) => `${$1}${'*'.repeat($2.length)}${$3}`)
 ```
+
+---
+
+```js
+/**
+ * Bubble Sort
+ * @param arr - array
+ */
+function bubbleSort(arr) {
+    let tmp = 0,
+        lastExchangeIndex = 0,
+        len = arr.length,
+        sortBorder = len - 1
+    for(let i=0; i<len; i++) {
+        let isSorted = true
+        for(let j=0; j<sortBorder; j++) {
+            if (arr[j] > arr[j+1]) {
+                tmp = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = tmp
+                isSorted = false
+                lastExchangeIndex = j
+            }
+        }
+        sortBorder = lastExchangeIndex
+        if(isSorted) break
+    }
+    return arr
+}
+```
