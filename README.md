@@ -493,22 +493,20 @@ const maskIDcard = card => `${card}`
 ---
 
 ```js
-/**
- * Bubble Sort
- * @param arr - array
- */
-function bubbleSort(arr) {
+// Bubble Sort
+Array.prototype.bubbleSort = function() {
     let tmp = 0,
         lastExchangeIndex = 0,
-        len = arr.length,
+        len = this.length,
         sortBorder = len - 1
+
     for(let i=0; i<len; i++) {
         let isSorted = true
         for(let j=0; j<sortBorder; j++) {
-            if (arr[j] > arr[j+1]) {
-                tmp = arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = tmp
+            if (this[j] > this[j+1]) {
+                tmp = this[j]
+                this[j] = this[j+1]
+                this[j+1] = tmp
                 isSorted = false
                 lastExchangeIndex = j
             }
@@ -516,6 +514,34 @@ function bubbleSort(arr) {
         sortBorder = lastExchangeIndex
         if(isSorted) break
     }
-    return arr
+
+    return this
 }
+
+// Quick Sort
+Array.prototype.quickSort = function() {
+    const len = this.length,
+        basic = this[0],
+        left = [],
+        right = []
+
+    if(len < 2) return this
+    for(let i=1; i<len; i++) {
+        const iv = this[i]
+        iv >= basic && right.push(iv)
+        iv < basic && left.push(iv)
+    }
+
+    return left.quickSort().concat(basic, right.quickSort())
+}
+```
+
+---
+
+```js
+/**
+ * Is Odd
+ * @param num - number
+ */
+const isOdd = num => ~num&1 ? true : false
 ```
