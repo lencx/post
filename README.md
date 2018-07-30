@@ -539,9 +539,6 @@ Array.prototype.quickSort = function() {
 ---
 
 ```js
-/**
- * Is Odd
- * @param num - number
- */
-const isOdd = num => ~num&1 ? true : false
+// Is Odd
+const isOdd = num => ~num&1 ? false : true
 ```
