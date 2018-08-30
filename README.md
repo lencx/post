@@ -443,6 +443,22 @@ const tpl = (html, data) => document.querySelector(html).innerHTML
         .replace(/(\{\{)(\w+)(\}\})/g, ($, $1, $2) => data[$2] || '')
 ```
 
+```js
+/**
+ * Creates the HTML element
+ * @param string tag
+ * @param object attr
+ * @example
+ * createEl('link', {rel: 'stylesheet', type: 'text/css', href: '/main.css'})
+ * createEl('script', {src: 'common.js'})
+ */
+const createEl = (tag, attr) => {
+    let _tag = document.createElement(tag)
+    Object.keys(attr).forEach(i => _tag.setAttribute(i, attr[i]))
+    document.head.appendChild(_tag)
+}
+```
+
 ---
 
 > Hide part of numbers or characters
