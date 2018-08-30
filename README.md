@@ -558,3 +558,23 @@ Array.prototype.quickSort = function() {
 // Is Odd
 const isOdd = num => ~num&1 ? false : true
 ```
+
+---
+
+```js
+// Get IP address
+const getIP = () => {
+    const os = require('os');
+    let _o = [], _ips = []
+    const deepObj = (obj) => {
+        if(typeof obj === 'object') {
+            Object.keys(obj).forEach(i => Array.isArray(obj)
+            ? _o = _o.concat(obj[i])
+            :  deepObj(obj[i]))
+        }
+        return _o
+    }
+    deepObj(os.networkInterfaces()).filter(i => i.family === 'IPv4' && !i.internal).map(i => _ips.push(i.address))
+    return _ips[0]
+}
+```
