@@ -124,6 +124,19 @@ const randomHexColor = () => {
 const objHas = (obj, key) => obj !== null && Object.prototype.hasOwnProperty.call(obj, key)
 ```
 
+```js
+// clone object
+const cloneObj = (obj={}) => {
+    let o = {}
+    for(let prop in obj) {
+        if(obj.hasOwnProperty(prop)) {
+            o[prop] = obj[prop]
+        }
+    }
+    return o
+}
+```
+
 [[☝︎ Back To TOP]](#table-of-contents)
 
 #### Get Depth Object properties
