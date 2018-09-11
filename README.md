@@ -595,7 +595,7 @@ const getIP = () => {
 ---
 
 ```js
-const getRandomRange => (min, max) => {
+const getRandomRange = (min, max) => {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min)) + min //The maximum is exclusive and the minimum is inclusive
@@ -609,6 +609,8 @@ const getRandomRange => (min, max) => {
  */
 const randomNumber = (num, min, max) => {
     let arr = new Set()
+    let _n = Math.abs(min - max)
+    num = _n < num ? _n : num
     while (arr.size < num) {
         arr.add(getRandomRange(min, max))
     }
