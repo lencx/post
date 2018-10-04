@@ -46,8 +46,8 @@ orderBy(b, 'id')
 orderBy(b, 'part.title', 'desc')
 ```
 
-![data](/img/js/orderby-a.png)
-![data](/img/js/orderby-b.png)
+![data](/static/img/js/orderby-a.png)
+![data](/static/img/js/orderby-b.png)
 
 [[↻ Back To Home](/README.md)] &nbsp;
 [[☝︎ Back To TOP](#orderby)]

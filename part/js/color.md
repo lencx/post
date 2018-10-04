@@ -40,8 +40,8 @@ rgbToHex(0, 0, 255) // '#0000ff'
 rgbToHex(0, 256, 255) // 'Invalid color value! ...'
 ```
 
-![hexToRgb console error](/img/js/hextorgb.png)
-![rgbToHex console error](/img/js/rgbtohex.png)
+![hexToRgb console error](/static/img/js/hextorgb.png)
+![rgbToHex console error](/static/img/js/rgbtohex.png)
 
 [[↻ Back To Home](/README.md)] &nbsp;
 [[☝︎ Back To TOP](#color)]

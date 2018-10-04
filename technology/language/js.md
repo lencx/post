@@ -4,7 +4,7 @@
 
 ### *Concept*
 
-* [`this`](/concept/this.zh.md)
+* [`this`](/concept/js/this.zh.md)
 
 ### [*Color*](#color)
 
