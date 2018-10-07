@@ -29,17 +29,25 @@
 ## Binary -> Decimal
 
 For binary number with n digits:
-> $d_{n-1}...d_3d_2d_1d_0$
+<!-- > $d_{n-1}...d_3d_2d_1d_0$ -->
+> d<sub>n-1</sub>...d<sub>3</sub>d<sub>2</sub>d<sub>1</sub>d<sub>0</sub>
 
-The decimal number is equal to the sum of binary digits ($d_n$) times their power of 2 ($2^n$)
-> decimal = $d_0×2^0+d_1×2^1+d_2×2^2+...$
+The decimal number is equal to the sum of binary digits (<!--$d_n$-->d<sub>n</sub>) times their power of 2 (2<sup>n</sup>)
+<!-- > decimal = $d_0×2^0+d_1×2^1+d_2×2^2+...$ -->
+> decimal = d<sub>0</sub>×2<sup>0</sup>+d<sub>1</sub>×2<sup>1</sup>+d<sub>2</sub>×2<sup>2</sup>+...
 
-* Example
+---
 
-Find the decimal value of $111001_2$
+Example
+
+Find the decimal value of <!-- $111001_2$ -->111001<sub>2</sub>
+
 |                   |       |       |       |       |       |       |
 | ----------------- | ----- | ----- | ----- | ----- | ----- | ----- |
 | **binary number** | 1     | 1     | 1     | 0     | 0     | 1     |
-| **power of 2**    | $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ |
+| **power of 2**    | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
 
-> $111001_2 = 1⋅2^5+1⋅2^4+1⋅2^3+0⋅2^2+0⋅2^1+1⋅2^0 = 57_{10}$
+<!-- | **power of 2**    | $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ | -->
+
+<!-- > $111001_2 = 1⋅2^5+1⋅2^4+1⋅2^3+0⋅2^2+0⋅2^1+1⋅2^0 = 57_{10}$ -->
+> 111001<sub>2</sub> = 1⋅2<sup>5</sup>+1⋅2<sup>4</sup>+1⋅2<sup>3</sup>+0⋅2<sup>2</sup>+0⋅2<sup>1</sup>+1⋅2<sup>0</sup> = 57<sub>10</sub>
