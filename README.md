@@ -4,11 +4,11 @@
 
 * [JavaScript](/technology/language/js.md)
 * [TypeScript](/technology/language/ts.md)
-* [rust](/technology/language/rust.md)
+* [Rust](/technology/language/rust.md)
 
 ## Concept
 
-* [`this` - js](/concept/js/this.zh.md)
+* [`this` - JS](/concept/js/this.zh.md)
 
 ## Tools
 
