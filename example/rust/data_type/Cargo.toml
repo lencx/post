@@ -1,6 +1,0 @@
-[package]
-name = "data_type"
-version = "0.1.0"
-authors = ["Len <cxin1314@gmail.com>"]
-
-[dependencies]
