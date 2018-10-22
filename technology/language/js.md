@@ -617,3 +617,41 @@ const randomNumber = (num, min, max) => {
     return [...arr]
 }
 ```
+
+```js
+/**
+ * Mask Background No Scrolling
+ * @param Object el - click button
+ * @param Function open - open the mask callback
+ * @param Function close - close the mask callback
+ * @example
+ * maskBgNoScrolling('#menu', () => {
+ *  console.log('open mask')
+ * }, () => {
+ *  console.log('close mask')
+ * })
+ */
+const maskBgNoScrolling = (el, open, close) => {
+    let _top = 0, taggle = false
+    const bodyStyle = (position, top) => {
+        let _body = document.body
+        _body.style.position = position
+        _body.style.top = top
+    }
+    const stopBodyScroll = isFixed => {
+        if(isFixed) {
+            _top = window.scrollY
+            _top2 = -_top + 'px'
+            bodyStyle('fixed', _top2)
+        } else {
+            bodyStyle('', '')
+            window.scrollTo(0, _top)
+        }
+    }
+    document.querySelector(el).addEventListener('click', () => {
+        if(taggle) { taggle = false;close() }
+        else { taggle = true;open() }
+        stopBodyScroll(taggle)
+    })
+}
+```
