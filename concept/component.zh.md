@@ -7,7 +7,7 @@
 
 ### 抽象
 
-* DRY 原则：Don't repeat yourself 《程序员修炼之道》<sub>从小工到专家</sub>
+* DRY 原则：Don't repeat yourself 《程序员修炼之道》<sub>从小工到专家</sub>
 * 三次原则：Rule of three 《重构》<sub>改善已有代码设计</sub>
 
 ### 组件设计
@@ -42,7 +42,7 @@
 
 ### 设计禁区
 
-* 越界操作
+* 越界操作
 * 副作用
 * 侵入性
 * 环形依赖
@@ -68,7 +68,7 @@
 
 ### 样式分离
 
-> `多种主题` `主题定制工具` `交互动画扩展`
+> `多种主题` `主题定制工具` `交互动画扩展`
 
 * 需求
   * 主题定制
@@ -111,22 +111,22 @@
 * Karma 驱动
 * Mocha 测试框架
 * Chai 断言库
-* Mock 模拟API
+* Mock 模拟API
 * Istanbul 覆盖率
 
-### Jest
+### Jest
 
 > 一站式测试方案
 
 * DOM API
 * 断言库
-* Mock库
+* Mock库
 * 快照
 * 覆盖率
 
 ### 组件库构建方案
 
-### ES模块输出规范
+### ES模块输出规范
 
 > [Rollup](https://rollupjs.org): Tree-shaking
 

@@ -9,6 +9,7 @@
 ## Concept
 
 * [`this` - JS](/concept/js/this.zh.md)
+* [Component](/concept/component.zh.md)
 
 ## Tools
 
