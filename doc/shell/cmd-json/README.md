@@ -1,6 +1,6 @@
 # Terminal JOSN Data Formatting & Highlighting
 
-> [cmd-json](https://github.com/lencx/post/shell/cmd-json.sh)
+> [cmd-json](/shell/cmd-json.sh)
 
 ## [Environmental](../../env.md)
 

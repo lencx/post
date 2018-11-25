@@ -1,10 +1,10 @@
-###############################################################
-# author: lencx <cxin1314@gmail.com>                          #
-# env: node                                                   #
-# doc: https://github.com/lencx/post/doc/shell/cmd-json       #
-# homepage: https://github.com/lencx/post/shell/cmd-json.sh   #
-# more: https://github.com/antonmedv/fx                       #
-###############################################################
+##########################################################################
+# author: lencx <cxin1314@gmail.com>                                     #
+# env: node                                                              #
+# doc: hthttps://github.com/lencx/post/tree/master/doc/shell/cmd-json    #
+# homepage: https://github.com/lencx/post/blob/master/shell/cmd-json.sh  #
+# more: https://github.com/antonmedv/fx                                  #
+##########################################################################
 
 # command help
 help() {
