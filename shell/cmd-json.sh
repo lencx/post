@@ -1,7 +1,7 @@
 ##########################################################################
 # author: lencx <cxin1314@gmail.com>                                     #
 # env: node                                                              #
-# doc: hthttps://github.com/lencx/post/tree/master/doc/shell/cmd-json    #
+# doc: https://github.com/lencx/post/tree/master/doc/shell/cmd-json      #
 # homepage: https://github.com/lencx/post/blob/master/shell/cmd-json.sh  #
 # more: https://github.com/antonmedv/fx                                  #
 ##########################################################################
@@ -9,8 +9,8 @@
 # command help
 help() {
   echo "    jf help:"
-  echo "      jf -f <file_name> [<anonymous_function|Object_key>] # -f: local file"
-  echo "      jf <url> [<anonymous_function|Object_key>] # default: url"
+  echo "      jf -f <file_name> [<anonymous_function|Object_key>]     -f: local file"
+  echo "      jf <url> [<anonymous_function|Object_key>]              default: url"
 }
 
 # Command-line JSON processing tool
