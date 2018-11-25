@@ -655,3 +655,8 @@ const maskBgNoScrolling = (el, open, close) => {
     })
 }
 ```
+
+```js
+// Chinese
+/\p{Unified_Ideograph}/u
+```
