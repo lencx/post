@@ -660,3 +660,12 @@ const maskBgNoScrolling = (el, open, close) => {
 // Chinese
 /\p{Unified_Ideograph}/u
 ```
+
+```js
+const removeDuplicates = (oArr, prop) => oArr
+    .filter((obj, pos, arr) => arr
+    .map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos)
+
+const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr
+    .slice(i * size, (i * size) + size));
+```
