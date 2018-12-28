@@ -21,7 +21,7 @@ jsonForamt() {
     elif [ $1 == "-f" ]; then
       if [ $3 ]; then
         if [ $3 =~ "=>" ]; then
-          cat $2 | fx $3
+          cat $2 | fx $3 2>/dev/null
         else
           cat $2 | fx "this.$3"
         fi
