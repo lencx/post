@@ -669,3 +669,15 @@ const removeDuplicates = (oArr, prop) => oArr
 const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr
     .slice(i * size, (i * size) + size));
 ```
+
+```js
+function formatBytes(bytes, decimals){
+    const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const dm = decimals < 0 ? 0 : decimals || 2;
+    let l = 0;
+    let n = parseInt(bytes, 10) || 0;
+    while(n >= 1024 && ++l)
+        n = n / 1024;
+    return(n.toFixed(dm) + ' ' + units[l]);
+}
+```
