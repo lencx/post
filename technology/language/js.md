@@ -671,7 +671,7 @@ const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }
 ```
 
 ```js
-function formatBytes(bytes, decimals){
+const formatBytes = (bytes, decimals) => {
     const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     const dm = decimals < 0 || !decimals ? 0 : decimals || 2;
     let l = 0;
@@ -680,4 +680,17 @@ function formatBytes(bytes, decimals){
         n = n / 1024;
     return(n.toFixed(dm) + ' ' + units[l]);
 }
+```
+
+```js
+/**
+ * groupBy
+ * @param origin - origin data
+ * @param prop - object properties that need to be grouped
+ */
+const groupBy = (origin, prop) => origin.reduce((pre, current) => {
+  pre[current[prop]] = pre[current[prop]] || [];
+  pre[current[prop]].push(current);
+  return pre;
+}, {});
 ```
