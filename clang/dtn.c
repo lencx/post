@@ -1,4 +1,5 @@
 /*
+* 十进制转N进制
 * 除基数(进制)取余，即每次将整数部分除以基数，余数为该位权上的数，
 * 而商继续除以基数，余数又为上一个位权上的数，这个步骤一直持续下去，
 * 直到商为0为止，最后读数时候，从最后一个余数读起，一直到最前面的一个余数。
@@ -29,7 +30,7 @@ int main() {
     }
     a[count] = digit; // 数组赋值
     count++; // 自增，数组索引
-    temp = temp / base; //
+    temp = temp / base;
     printf("temp:=> %d\n", temp);
   } while(temp != 0); // 循环执行的条件，temp不等于0
 
@@ -39,8 +40,5 @@ int main() {
     printf("%c", a[i]); // %c，数组a中存储的是字符
   }
   printf(".\n");
-  printf("%c\n", '0'+0);
-  printf("%c\n", '0'+1);
-  printf("%c\n", '0'+10);
   return 0;
 }

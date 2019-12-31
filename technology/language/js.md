@@ -745,3 +745,29 @@ Date.prototype.Format = function (fmt) {
   return fmt;
 }
 ```
+
+```js
+// zh
+/[\u2E80-\u2E99\u2E9B-\u2EF3\u2F00-\u2FD5\u3005\u3007\u3021-\u3029\u3038-\u303B\u3400-\u4DB5\u4E00-\u9FD5\uF900-\uFA6D\uFA70-\uFAD9]/
+```
+
+```js
+// https://www.w3resource.com/javascript-exercises/javascript-array-exercise-38.php
+function arrayMove(arr, oldIndex, newIndex) {
+  while (oldIndex < 0) {
+    oldIndex += arr.length;
+  }
+  while (newIndex < 0) {
+    newIndex += arr.length;
+  }
+  if (newIndex >= arr.length) {
+    let k = newIndex - arr.length;
+    // eslint-disable-next-line no-plusplus
+    while ((k--) + 1) {
+      arr.push(undefined);
+    }
+  }
+  arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+  return arr;
+}
+```
